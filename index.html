@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Axis Logistics | Professional Trucking Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* CSS will be added separately */
+        :root {
+            --primary: #2585f8;
+            --primary-dark: #1a6fd0;
+            --secondary: #f8f9fa;
+            --accent: #ffc107;
+            --dark: #212529;
+            --light: #ffffff;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Basic styling to prevent overlapping */
+        header {
+            background-color: var(--light);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            padding: 80px 0;
+            clear: both;
+        }
+
+        .hero {
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 180px 0 100px;
+        }
+
+        .services, .testimonials {
+            background-color: var(--secondary);
+        }
+
+        .stats {
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 80px 0;
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 70px 0 0;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container">
+            <div class="nav-container">
+                <a href="#" class="logo">
+                    <img src="logo.png" alt="Apex Axis Logo" class="logo-img">
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav>
+                    <ul id="navMenu">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Request Service</a></li>
+                        <li><a href="#" class="btn btn-primary">Get Quote</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Professional Logistics Solutions for Your Business</h1>
+                <p>Apex Axis delivers reliable, efficient, and cost-effective trucking services tailored to meet your company's unique logistics needs.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">Request Service</a>
+                    <a href="#" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Apex Axis</h2>
+                <p class="section-subtitle">We're a leading logistics company with years of experience in providing exceptional trucking services.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="scania_multi.jpeg" alt="About Apex Axis">
+                </div>
+                <div class="about-text">
+                    <h3>Your Trusted Partner in Logistics</h3>
+                    <p>At Apex Axis, we understand that reliable transportation is crucial to your business operations. We've built our reputation on delivering consistent, high-quality logistics services that keep your supply chain running smoothly.</p>
+                    <p>With a modern fleet of trucks, experienced drivers, and state-of-the-art tracking systems, we ensure your cargo reaches its destination safely and on time, every time.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Nationwide coverage with strategic distribution centers</li>
+                        <li><i class="fas fa-check-circle"></i> Modern fleet with regular maintenance and safety checks</li>
+                        <li><i class="fas fa-check-circle"></i> Professional drivers with extensive training</li>
+                        <li><i class="fas fa-check-circle"></i> Real-time tracking and status updates</li>
+                        <li><i class="fas fa-check-circle"></i> Dedicated customer support team</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">We offer a comprehensive range of trucking and logistics services to meet your business needs.</p>
+            </div>
+            <div class="service-cards">
+                <!-- Service Card 1 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="truck_load.jpg" alt="Full Truckload Services">
+                    </div>
+                    <div class="service-content">
+                        <h3>Full Truckload Services</h3>
+                        <p>Dedicated transportation solutions for larger shipments. Our full truckload services provide exclusive use of a truck for your freight, ensuring direct delivery with no additional stops.</p>
+                        <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/600/400" alt="Less-Than-Truckload (LTL) Services">
+                    </div>
+                    <div class="service-content">
+                        <h3>Less-Than-Truckload (LTL)</h3>
+                        <p>Cost-effective solutions for smaller shipments. Our LTL services allow you to pay only for the space you need, making it perfect for businesses with smaller freight volumes.</p>
+                        <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/600/400" alt="Expedited Shipping">
+                    </div>
+                    <div class="service-content">
+                        <h3>Expedited Shipping</h3>
+                        <p>Time-critical delivery solutions when you need it fast. Our expedited shipping services ensure your urgent freight arrives at its destination as quickly as possible.</p>
+                        <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 4 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/600/400" alt="Specialized Freight">
+                    </div>
+                    <div class="service-content">
+                        <h3>Specialized Freight</h3>
+                        <p>Safe transportation for unique cargo. Our specialized freight services cater to oversized, high-value, or sensitive shipments that require special handling or equipment.</p>
+                        <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number"><i class="fas fa-truck"></i> 250+</div>
+                    <div class="stat-text">Trucks in Fleet</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number"><i class="fas fa-users"></i> 500+</div>
+                    <div class="stat-text">Happy Clients</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number"><i class="fas fa-road"></i> 15M+</div>
+                    <div class="stat-text">Miles Covered</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number"><i class="fas fa-map-marked-alt"></i> 48</div>
+                    <div class="stat-text">States Served</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Client Testimonials</h2>
+                <p class="section-subtitle">Here's what our clients have to say about our services.</p>
+            </div>
+            <div class="testimonial-container">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-slide active">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>Apex Axis has been instrumental in streamlining our supply chain operations. Their reliable service and transparent communication have made them an invaluable partner for our business.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="/api/placeholder/100/100" alt="John Smith">
+                        </div>
+                        <div class="author-info">
+                            <h4>John Smith</h4>
+                            <p>Supply Chain Director, Global Tech Inc.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>We've worked with several logistics providers in the past, but none have matched the level of service and dedication that Apex Axis delivers. Their team goes above and beyond to ensure our freight arrives safely and on time.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="/api/placeholder/100/100" alt="Sarah Johnson">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Operations Manager, Fresh Foods Co.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>Since partnering with Apex Axis, we've seen a significant reduction in transit times and shipping costs. Their efficient logistics solutions have given us a competitive edge in our industry.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="/api/placeholder/100/100" alt="Michael Brown">
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Brown</h4>
+                            <p>CEO, Innovative Manufacturing</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-controls">
+                    <button id="prevTestimonial"><i class="fas fa-chevron-left"></i></button>
+                    <button id="nextTestimonial"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                
+                <div class="testimonial-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Request Our Services</h2>
+                <p class="section-subtitle">Fill out the form below, and our team will get back to you with a customized logistics solution.</p>
+            </div>
+            <div class="contact-form-container">
+                <div class="form-image">
+                    <img src="/api/placeholder/600/800" alt="Contact Apex Axis">
+                </div>
+                <div class="contact-form">
+                    <form id="serviceRequestForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="companyName">Company Name</label>
+                            <input type="text" id="companyName" class="form-control" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="serviceType">Service Type</label>
+                            <select id="serviceType" class="form-control" required>
+                                <option value="" selected disabled>Select a service</option>
+                                <option value="full-truckload">Full Truckload</option>
+                                <option value="ltl">Less-Than-Truckload (LTL)</option>
+                                <option value="expedited">Expedited Shipping</option>
+                                <option value="specialized">Specialized Freight</option>
+                                <option value="other">Other (Please specify)</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="origin">Origin Location</label>
+                                <input type="text" id="origin" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="destination">Destination</label>
+                                <input type="text" id="destination" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Additional Information</label>
+                            <textarea id="message" class="form-control" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Submit Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="footer-logo-img">AA</div>
+                        <div class="footer-logo-text">ApexAxis</div>
+                    </div>
+                    <p>Apex Axis is your trusted partner for all logistics needs. We deliver reliable, efficient, and cost-effective trucking services across the nation.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Request Service</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Terms & Conditions</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Full Truckload</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Less-Than-Truckload</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Expedited Shipping</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Specialized Freight</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Warehouse Solutions</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Supply Chain Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Logistics Way, Truck City, TC 12345, USA</p>
+                    <p><i class="fas fa-phone-alt"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@apexaxis.com</p>
+                    <p><i class="fas fa-clock"></i> Monday - Friday: 8:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Apex Axis Logistics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Modal -->
+    <div class="modal" id="quoteModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h3>Get A Quick Quote</h3>
+            </div>
+            <form id="quoteForm">
+                <div class="form-group">
+                    <label for="quoteName">Full Name</label>
+                    <input type="text" id="quoteName" class="form-control" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="quoteEmail">Email Address</label>
+                        <input type="email" id="quoteEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="quotePhone">Phone Number</label>
+                        <input type="tel" id="quotePhone" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="quoteService">Service Type</label>
+                    <select id="quoteService" class="form-control" required>
+                        <option value="" selected disabled>Select a service</option>
+                        <option value="full-truckload">Full Truckload</option>
+                        <option value="ltl">Less-Than-Truckload (LTL)</option>
+                        <option value="expedited">Expedited Shipping</option>
+                        <option value="specialized">Specialized Freight</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quoteDetails">Shipping Details</label>
+                    <textarea id="quoteDetails" class="form-control" rows="3" placeholder="Briefly describe your shipping needs"></textarea>
+                </div>
+                <button type="submit" class="form-submit">Submit Quote Request</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        document.addEventListener('DOMContentLoaded', function() {
+            // Basic JavaScript to prevent any functionality issues
+            // A more comprehensive script would be added separately
+        });
+    </script>
+</body>
+</html>
