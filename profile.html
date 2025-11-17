@@ -1,0 +1,393 @@
+// ========================================
+// AIA Interview Questions - Interactive Script
+// Handles collapsible sections and navigation
+// ========================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Initialize the application
+    init();
+    
+    function init() {
+        setupCollapsibleSections();
+        setupCollapsibleQuestions();
+        setupControlButtons();
+        setupProgressBar();
+        setupSmoothScroll();
+        
+        // Collapse all sections by default for better initial view
+        collapseAllSections();
+    }
+    
+    // ========================================
+    // Section-Level Collapsing (h2 headers)
+    // ========================================
+    function setupCollapsibleSections() {
+        const sectionHeaders = document.querySelectorAll('h2:not(.document-info h2):not(.toc h2)');
+        
+        sectionHeaders.forEach(header => {
+            header.addEventListener('click', function() {
+                toggleSection(this);
+            });
+            
+            // Make headers keyboard accessible
+            header.setAttribute('tabindex', '0');
+            header.setAttribute('role', 'button');
+            header.setAttribute('aria-expanded', 'true');
+            
+            header.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleSection(this);
+                }
+            });
+        });
+    }
+    
+    function toggleSection(header) {
+        const content = header.nextElementSibling;
+        
+        if (!content || !content.classList.contains('section-content')) {
+            return;
+        }
+        
+        const isCollapsed = content.classList.contains('collapsed');
+        
+        if (isCollapsed) {
+            // Expand
+            content.classList.remove('collapsed');
+            header.classList.remove('collapsed');
+            header.setAttribute('aria-expanded', 'true');
+        } else {
+            // Collapse
+            content.classList.add('collapsed');
+            header.classList.add('collapsed');
+            header.setAttribute('aria-expanded', 'false');
+        }
+    }
+    
+    // ========================================
+    // Question-Level Collapsing (h3 headers)
+    // ========================================
+    function setupCollapsibleQuestions() {
+        const questionHeaders = document.querySelectorAll('h3');
+        
+        questionHeaders.forEach(header => {
+            header.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent section collapse
+                toggleQuestion(this);
+            });
+            
+            // Make headers keyboard accessible
+            header.setAttribute('tabindex', '0');
+            header.setAttribute('role', 'button');
+            header.setAttribute('aria-expanded', 'true');
+            
+            header.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleQuestion(this);
+                }
+            });
+        });
+    }
+    
+    function toggleQuestion(header) {
+        // Find the answer paragraph(s) following this question
+        let nextElement = header.nextElementSibling;
+        
+        // Check if there's already a wrapper
+        let answerWrapper = null;
+        if (nextElement && nextElement.classList.contains('answer')) {
+            answerWrapper = nextElement;
+        } else {
+            // Create wrapper if it doesn't exist
+            answerWrapper = document.createElement('div');
+            answerWrapper.className = 'answer';
+            
+            // Move all paragraph elements into the wrapper
+            while (nextElement && nextElement.tagName === 'P') {
+                const currentElement = nextElement;
+                nextElement = nextElement.nextElementSibling;
+                answerWrapper.appendChild(currentElement);
+            }
+            
+            header.parentNode.insertBefore(answerWrapper, header.nextSibling);
+        }
+        
+        const isCollapsed = answerWrapper.classList.contains('collapsed');
+        
+        if (isCollapsed) {
+            // Expand
+            answerWrapper.classList.remove('collapsed');
+            header.classList.remove('collapsed');
+            header.setAttribute('aria-expanded', 'true');
+        } else {
+            // Collapse
+            answerWrapper.classList.add('collapsed');
+            header.classList.add('collapsed');
+            header.setAttribute('aria-expanded', 'false');
+        }
+    }
+    
+    // ========================================
+    // Control Buttons
+    // ========================================
+    function setupControlButtons() {
+        // Create control buttons container
+        const controls = document.createElement('div');
+        controls.className = 'controls';
+        controls.innerHTML = `
+            <button class="btn btn-primary" id="expandAll">Expand All Sections</button>
+            <button class="btn btn-secondary" id="collapseAll">Collapse All Sections</button>
+            <button class="btn btn-success" id="expandQuestions">Expand All Questions</button>
+            <button class="btn btn-secondary" id="collapseQuestions">Collapse All Questions</button>
+        `;
+        
+        // Insert after the h1
+        const h1 = document.querySelector('h1');
+        h1.parentNode.insertBefore(controls, h1.nextSibling);
+        
+        // Add event listeners
+        document.getElementById('expandAll').addEventListener('click', expandAllSections);
+        document.getElementById('collapseAll').addEventListener('click', collapseAllSections);
+        document.getElementById('expandQuestions').addEventListener('click', expandAllQuestions);
+        document.getElementById('collapseQuestions').addEventListener('click', collapseAllQuestions);
+    }
+    
+    function expandAllSections() {
+        const sections = document.querySelectorAll('.section-content');
+        const headers = document.querySelectorAll('h2:not(.document-info h2):not(.toc h2)');
+        
+        sections.forEach(section => section.classList.remove('collapsed'));
+        headers.forEach(header => {
+            header.classList.remove('collapsed');
+            header.setAttribute('aria-expanded', 'true');
+        });
+    }
+    
+    function collapseAllSections() {
+        const sections = document.querySelectorAll('.section-content');
+        const headers = document.querySelectorAll('h2:not(.document-info h2):not(.toc h2)');
+        
+        sections.forEach(section => section.classList.add('collapsed'));
+        headers.forEach(header => {
+            header.classList.add('collapsed');
+            header.setAttribute('aria-expanded', 'false');
+        });
+    }
+    
+    function expandAllQuestions() {
+        const answers = document.querySelectorAll('.answer');
+        const headers = document.querySelectorAll('h3');
+        
+        answers.forEach(answer => answer.classList.remove('collapsed'));
+        headers.forEach(header => {
+            header.classList.remove('collapsed');
+            header.setAttribute('aria-expanded', 'true');
+        });
+    }
+    
+    function collapseAllQuestions() {
+        const answers = document.querySelectorAll('.answer');
+        const headers = document.querySelectorAll('h3');
+        
+        answers.forEach(answer => answer.classList.add('collapsed'));
+        headers.forEach(header => {
+            header.classList.add('collapsed');
+            header.setAttribute('aria-expanded', 'false');
+        });
+    }
+    
+    // ========================================
+    // Progress Bar
+    // ========================================
+    function setupProgressBar() {
+        // Create progress bar
+        const progressContainer = document.createElement('div');
+        progressContainer.className = 'progress-container';
+        progressContainer.innerHTML = '<div class="progress-bar"></div>';
+        
+        document.body.insertBefore(progressContainer, document.body.firstChild);
+        
+        // Update on scroll
+        window.addEventListener('scroll', updateProgressBar);
+        updateProgressBar(); // Initial update
+    }
+    
+    function updateProgressBar() {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight - windowHeight;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const progress = (scrollTop / documentHeight) * 100;
+        
+        const progressBar = document.querySelector('.progress-bar');
+        progressBar.style.width = progress + '%';
+    }
+    
+    // ========================================
+    // Smooth Scroll for Internal Links
+    // ========================================
+    function setupSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    }
+    
+    // ========================================
+    // Keyboard Shortcuts
+    // ========================================
+    document.addEventListener('keydown', function(e) {
+        // Ctrl/Cmd + E: Expand all sections
+        if ((e.ctrlKey || e.metaKey) && e.key === 'e') {
+            e.preventDefault();
+            expandAllSections();
+        }
+        
+        // Ctrl/Cmd + R: Collapse all sections
+        if ((e.ctrlKey || e.metaKey) && e.key === 'r') {
+            e.preventDefault();
+            collapseAllSections();
+        }
+        
+        // Ctrl/Cmd + Q: Expand all questions
+        if ((e.ctrlKey || e.metaKey) && e.key === 'q') {
+            e.preventDefault();
+            expandAllQuestions();
+        }
+        
+        // Ctrl/Cmd + W: Collapse all questions
+        if ((e.ctrlKey || e.metaKey) && e.key === 'w') {
+            e.preventDefault();
+            collapseAllQuestions();
+        }
+    });
+    
+    // ========================================
+    // Search Functionality (Optional Enhancement)
+    // ========================================
+    function setupSearch() {
+        // Create search box
+        const searchContainer = document.createElement('div');
+        searchContainer.className = 'search-container';
+        searchContainer.innerHTML = `
+            <input type="text" id="searchBox" placeholder="Search questions..." class="search-input">
+        `;
+        
+        const controls = document.querySelector('.controls');
+        controls.parentNode.insertBefore(searchContainer, controls.nextSibling);
+        
+        // Search functionality
+        const searchBox = document.getElementById('searchBox');
+        searchBox.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const questions = document.querySelectorAll('.question-container');
+            
+            questions.forEach(question => {
+                const text = question.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    question.style.display = 'block';
+                } else {
+                    question.style.display = 'none';
+                }
+            });
+        });
+    }
+    
+    // Uncomment to enable search
+    // setupSearch();
+    
+    // ========================================
+    // Local Storage - Remember State
+    // ========================================
+    function saveState() {
+        const state = {
+            sections: [],
+            questions: []
+        };
+        
+        document.querySelectorAll('h2:not(.document-info h2):not(.toc h2)').forEach((header, index) => {
+            state.sections[index] = !header.classList.contains('collapsed');
+        });
+        
+        document.querySelectorAll('h3').forEach((header, index) => {
+            state.questions[index] = !header.classList.contains('collapsed');
+        });
+        
+        localStorage.setItem('interviewQuestionsState', JSON.stringify(state));
+    }
+    
+    function loadState() {
+        const savedState = localStorage.getItem('interviewQuestionsState');
+        if (!savedState) return;
+        
+        try {
+            const state = JSON.parse(savedState);
+            
+            document.querySelectorAll('h2:not(.document-info h2):not(.toc h2)').forEach((header, index) => {
+                if (state.sections[index] === false) {
+                    toggleSection(header);
+                }
+            });
+            
+            document.querySelectorAll('h3').forEach((header, index) => {
+                if (state.questions[index] === false) {
+                    toggleQuestion(header);
+                }
+            });
+        } catch (e) {
+            console.error('Error loading saved state:', e);
+        }
+    }
+    
+    // Save state on changes (debounced)
+    let saveTimeout;
+    document.addEventListener('click', function(e) {
+        if (e.target.matches('h2, h3')) {
+            clearTimeout(saveTimeout);
+            saveTimeout = setTimeout(saveState, 500);
+        }
+    });
+    
+    // Uncomment to enable state persistence
+    // loadState();
+    
+});
+
+// ========================================
+// Print Functionality
+// ========================================
+function printDocument() {
+    window.print();
+}
+
+// ========================================
+// Export to PDF (using browser print to PDF)
+// ========================================
+function exportToPDF() {
+    // Expand all content before printing
+    document.querySelectorAll('.collapsed').forEach(el => {
+        el.classList.remove('collapsed');
+    });
+    
+    setTimeout(() => {
+        window.print();
+    }, 500);
+}
+
+console.log('%c Interview Questions Loaded Successfully! ', 'background: #3498db; color: white; font-size: 16px; padding: 10px;');
+console.log('%c Keyboard Shortcuts: ', 'font-weight: bold; font-size: 14px;');
+console.log('Ctrl/Cmd + E: Expand all sections');
+console.log('Ctrl/Cmd + R: Collapse all sections');
+console.log('Ctrl/Cmd + Q: Expand all questions');
+console.log('Ctrl/Cmd + W: Collapse all questions');
